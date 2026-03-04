@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<html>
+  <head>
+    <script type="module">
+      import './style.css'
+      import AFRAME from 'aframe'
+      import '@ucl-nuee/robot-loader/robotRegistry.js';
+      import '@ucl-nuee/robot-loader/robotLoader.js';
+      import '@ucl-nuee/robot-loader/ikWorker.js';
+      import '@ucl-nuee/robot-loader/reflectWorkerJoints.js';
+      import '@ucl-nuee/robot-loader/reflectJointLimits.js';
+      import '@ucl-nuee/robot-loader/axesFrame.js';
+      import '@ucl-nuee/robot-loader/armMotionUI.js';
+      import '@ucl-nuee/robot-loader/vrControllerThumbMenu.js';
+    </script>
+  </head>
+  <body>
+    <a-scene  xr-mode-ui="XRMode: xr" >
+      <a-entity id="robot-registry"
+                robot-registry >
+        <a-entity right-controller
+                  laser-controls="hand: right"
+                  thumbstick-menu="items: kinova-gen3-lite; laser: false"
+                  target-selector="id: kinova-gen3-lite"
+                  event-distributor
+                  visible="false">
+        </a-entity>
+      </a-entity>
+
+      <a-plane id="kinova-gen3-lite"
+               position="0.0 0.0 -2.0" rotation="-90 0 -90"
+               width="0.04" height="0.04" color="blue"
+               robot-loader="model: gen3-lite"
+               ik-worker="0, 1.57, -1.57, 0, 1.57, 0"
+               reflect-worker-joints
+               exact_solution="exact: false"
+               reflect-joint-limits
+               arm-motion-ui
+      />
+    </a-scene>
+  </body>
+</html>

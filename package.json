@@ -1,0 +1,20 @@
+{
+  "name": "testkinova2",
+  "private": false,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-basic-ssl": "^2.1.4",
+    "vite": "^7.3.1"
+  },
+  "dependencies": {
+    "@ucl-nuee/ik-cd-worker": "^0.4.7",
+    "@ucl-nuee/robot-loader": "^1.1.2",
+    "aframe": "^1.7.1"
+  }
+}
