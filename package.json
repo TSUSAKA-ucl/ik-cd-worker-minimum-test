@@ -13,8 +13,8 @@
     "vite": "^7.3.1"
   },
   "dependencies": {
-    "@ucl-nuee/ik-cd-worker": "^0.4.7",
-    "@ucl-nuee/robot-loader": "^1.1.2",
+    "@ucl-nuee/ik-cd-worker": "^0.4.8",
+    "@ucl-nuee/robot-loader": "^1.1.4",
     "aframe": "^1.7.1"
   }
 }

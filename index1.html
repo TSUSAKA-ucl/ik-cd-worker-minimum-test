@@ -13,8 +13,6 @@
       import '@ucl-nuee/robot-loader/axesFrame.js';
       import '@ucl-nuee/robot-loader/armMotionUI.js';
       import '@ucl-nuee/robot-loader/vrControllerThumbMenu.js';
-      import '@ucl-nuee/robot-loader/fingerCloser.js';
-      import '@ucl-nuee/ik-cd-worker/IkWorkerParamsComponents.js';
     </script>
   </head>
   <body>
@@ -34,14 +32,12 @@
                position="0.0 0.0 -2.0" rotation="-90 0 -90"
                width="0.04" height="0.04" color="blue"
                robot-loader="model: gen3-lite"
-               ik-worker="0, 3.14, 1.57, 0, 1.57, 0, 0.1, 0.1"
+               ik-worker="0, 1.57, -1.57, 0, 1.57, 0, 0.1, 0.1"
                reflect-worker-joints
                exact_solution="exact: false"
                reflect-joint-limits
-	       set-joint-limit-keep-moving="true"
                arm-motion-ui
-	       >
-      </a-plane>
+      />
     </a-scene>
   </body>
 </html>
