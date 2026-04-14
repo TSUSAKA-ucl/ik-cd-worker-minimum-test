@@ -10,6 +10,7 @@
       import '@ucl-nuee/robot-loader/ikWorker.js';
       import '@ucl-nuee/robot-loader/reflectWorkerJoints.js';
       import '@ucl-nuee/robot-loader/reflectJointLimits.js';
+      import '@ucl-nuee/robot-loader/reflectCollision.js';
       import '@ucl-nuee/robot-loader/axesFrame.js';
       import '@ucl-nuee/robot-loader/armMotionUI.js';
       import '@ucl-nuee/robot-loader/vrControllerThumbMenu.js';
@@ -21,14 +22,22 @@
                 robot-registry >
         <a-entity right-controller
                   laser-controls="hand: right"
-                  thumbstick-menu="items: kinova-gen3-lite; laser: false"
-                  target-selector="id: kinova-gen3-lite"
+                  thumbstick-menu="items: u2ur5e,u1ur5e; laser: false"
+                  target-selector="id: u2ur5e"
+                  event-distributor
+                  visible="false">
+        </a-entity>
+        <a-entity left-controller
+                  laser-controls="hand: left"
+                  thumbstick-menu="items: u2ur5e,u1ur5e; laser: false"
+                  target-selector="id: u1ur5e"
                   event-distributor
                   visible="false">
         </a-entity>
       </a-entity>
-
-      <a-plane id="kinova-gen3-lite"
+      <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4">
+      </a-plane>
+      <a-plane id="u1ur5e"
                position="0.0 0.0 -2.0" rotation="-90 0 -90"
                width="0.04" height="0.04" color="blue"
                robot-loader="model: ur5e"
@@ -36,8 +45,22 @@
                reflect-worker-joints
                exact_solution="exact: false"
                reflect-joint-limits
+               reflect-collision="color: yellow"
                arm-motion-ui
-      />
+	       >
+      </a-plane>
+      <a-plane id="u2ur5e"
+               position="0.3 0.0 -2.0" rotation="-90 0 -90"
+               width="0.04" height="0.04" color="blue"
+               robot-loader="model: ur5e"
+               ik-worker="0, -1.57, 1.57, -1.57, -1.57, 0"
+               reflect-worker-joints
+               exact_solution="exact: false"
+               reflect-joint-limits
+               reflect-collision="color: yellow"
+               arm-motion-ui
+	       >
+      </a-plane>
     </a-scene>
   </body>
 </html>
