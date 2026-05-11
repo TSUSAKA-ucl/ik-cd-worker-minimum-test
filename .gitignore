@@ -4,4 +4,6 @@ node_modules
 dist
 dist-ssr
 public/ik_cd_worker.js
+public/ik-worker.js
+public/cd-worker.js
 public/wasm

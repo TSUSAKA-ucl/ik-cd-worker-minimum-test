@@ -1,0 +1,23 @@
+{
+  "j2n6s300_joint_finger_3": {
+    "$": {"name": "j2n6s300_joint_finger_3", "type": "revolute"},
+    "parent": {"$": {"link": "j2n6s300_link_6"}},
+    "child": {"$": {"link": "j2n6s300_link_finger_3"}},
+    "axis": {"$": {"xyz": [0, 0, 1]}},
+    "limit": {"$": {"effort": 2, "lower": 0, "upper": 1.51, "velocity": 1}},
+    "origin": {
+      "$": {
+        "xyz": [-0.02226, -0.02707, -0.11482],
+        "rpy": [1.5707963276846773, 1.3861404915979285, -2.492330172800865]
+      }
+    }
+  },
+  "j2n6s300_joint_finger_tip_3": {
+    "$": {"name": "j2n6s300_joint_finger_tip_3", "type": "revolute"},
+    "parent": {"$": {"link": "j2n6s300_link_finger_3"}},
+    "child": {"$": {"link": "j2n6s300_link_finger_tip_3"}},
+    "axis": {"$": {"xyz": [0, 0, 1]}},
+    "limit": {"$": {"effort": 2, "lower": 0, "upper": 2, "velocity": 1}},
+    "origin": {"$": {"xyz": [0.044, -0.003, 0], "rpy": [0, 0, 0]}}
+  }
+}

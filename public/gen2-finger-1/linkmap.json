@@ -1,0 +1,190 @@
+{
+  "j2n6s300_link_6": {
+    "$": {
+      "name": "j2n6s300_link_6"
+    },
+    "visual": [
+      {
+        "geometry": {
+          "mesh": {
+            "$": {
+              "filename": "package://kinova_description/meshes/hand_3finger.dae"
+            }
+          }
+        },
+        "material": {
+          "$": {
+            "name": "carbon_fiber"
+          },
+          "color": {
+            "$": {
+              "rgba": "0.792156862745098 0.819607843137255 0.933333333333333 1"
+            }
+          }
+        }
+      },
+      {
+        "geometry": {
+          "mesh": {
+            "$": {
+              "filename": "package://kinova_description/meshes/ring_small.dae"
+            }
+          }
+        }
+      }
+    ],
+    "collision": {
+      "geometry": {
+        "mesh": {
+          "$": {
+            "filename": "package://kinova_description/meshes/hand_3finger.dae"
+          }
+        }
+      }
+    },
+    "inertial": {
+      "mass": {
+        "$": {
+          "value": "0.99"
+        }
+      },
+      "inertia": {
+        "$": {
+          "ixx": "0.00034532361869999995",
+          "ixy": "0",
+          "ixz": "0",
+          "iyy": "0.00034532361869999995",
+          "iyz": "0",
+          "izz": "0.0005815999999999999"
+        }
+      },
+      "origin": {
+        "$": {
+          "xyz": [
+            0,
+            0,
+            -0.06
+          ]
+        }
+      }
+    }
+  },
+  "j2n6s300_link_finger_1": {
+    "$": {
+      "name": "j2n6s300_link_finger_1"
+    },
+    "visual": {
+      "geometry": {
+        "mesh": {
+          "$": {
+            "filename": "package://kinova_description/meshes/finger_proximal.dae"
+          }
+        }
+      },
+      "material": {
+        "$": {
+          "name": "carbon_fiber"
+        },
+        "color": {
+          "$": {
+            "rgba": "0.792156862745098 0.819607843137255 0.933333333333333 1"
+          }
+        }
+      }
+    },
+    "collision": {
+      "geometry": {
+        "mesh": {
+          "$": {
+            "filename": "package://kinova_description/meshes/finger_proximal.dae"
+          }
+        }
+      }
+    },
+    "inertial": {
+      "mass": {
+        "$": {
+          "value": "0.01"
+        }
+      },
+      "inertia": {
+        "$": {
+          "ixx": "7.8999684e-07",
+          "ixy": "0",
+          "ixz": "0",
+          "iyy": "7.8999684e-07",
+          "iyz": "0",
+          "izz": "8e-08"
+        }
+      },
+      "origin": {
+        "$": {
+          "xyz": [
+            0.022,
+            0,
+            0
+          ]
+        }
+      }
+    }
+  },
+  "j2n6s300_link_finger_tip_1": {
+    "$": {
+      "name": "j2n6s300_link_finger_tip_1"
+    },
+    "visual": {
+      "geometry": {
+        "mesh": {
+          "$": {
+            "filename": "package://kinova_description/meshes/finger_distal.dae"
+          }
+        }
+      },
+      "material": {
+        "$": {
+          "name": "carbon_fiber"
+        },
+        "color": {
+          "$": {
+            "rgba": "0.792156862745098 0.819607843137255 0.933333333333333 1"
+          }
+        }
+      }
+    },
+    "collision": {
+      "geometry": {
+        "mesh": {
+          "$": {
+            "filename": "package://kinova_description/meshes/finger_distal.dae"
+          }
+        }
+      }
+    },
+    "inertial": {
+      "mass": {
+        "$": {
+          "value": "0.01"
+        }
+      },
+      "inertia": {
+        "$": {
+          "ixx": "7.8999684e-07",
+          "ixy": "0",
+          "ixz": "0",
+          "iyy": "7.8999684e-07",
+          "iyz": "0",
+          "izz": "8e-08"
+        }
+      },
+      "origin": {
+        "$": {
+          "xyz": [
+            0.022,
+            0,
+            0
+          ]
+        }
+      }
+    }
+  }
+}
