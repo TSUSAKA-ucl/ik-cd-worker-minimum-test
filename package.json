@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@ucl-nuee/ik-cd-worker": "^1.0.4",
-    "@ucl-nuee/robot-loader": "^1.2.3",
+    "@ucl-nuee/robot-loader": "^1.2.4",
     "aframe": "^1.7.1"
   }
 }
