@@ -15,6 +15,7 @@
       import '@ucl-nuee/robot-loader/fingerCloser.js';
       import '@ucl-nuee/robot-loader/ignoreCollision.js';
       import '@ucl-nuee/robot-loader/addFrameToJoints.js';
+      import '@ucl-nuee/ik-cd-worker/IkWorkerParamsComponents.js';
     </script>
   </head>
   <body>
@@ -23,54 +24,44 @@
                 robot-registry >
         <a-entity right-controller
                   laser-controls="hand: right"
-                  thumbstick-menu="items: kortex-gen2; laser: false"
-                  target-selector="id: kortex-gen2"
+                  thumbstick-menu="items: right-piper; laser: false"
+                  target-selector="id: right-piper"
+                  event-distributor
+                  visible="false">
+        </a-entity>
+        <a-entity left-controller
+                  laser-controls="hand: left"
+                  thumbstick-menu="items: left-piper; laser: false"
+                  target-selector="id: left-piper"
                   event-distributor
                   visible="false">
         </a-entity>
       </a-entity>
 
-      <a-plane id="kortex-gen2"
-               position="0.0 0.0 -2.0" rotation="-90 0 -90"
+	       <!-- add-frame-to-joints="from:5" -->
+      <a-plane id="right-piper"
+               position="0.2 0.8 -1.0" rotation="-90 0 90"
                width="0.04" height="0.04" color="blue"
-               robot-loader="model: gen2"
-	       add-frame-to-joints="from:5"
-               ik-worker="0, 3.14, 1.57, 0, 1.57, 0"
+               robot-loader="model: piper"
+               ik-worker="0, 0, 0, 0, 0, 0"
                reflect-collision="color: yellow"
                exact_solution="exact: false"
                reflect-joint-limits
+               set-joint-limit-keep-moving="true"
                arm-motion-ui
 	       >
-        <a-circle radius="0.03" color="blue"
-		  id="finger-1"
-                  robot-loader="model: gen2-finger-1"
-                  attach-to-another="to: kortex-gen2;event: a,b,x,y"
-                  finger-closer2="closeMax: 44,90; openMax: 0,0; initialJointValues: 0.01,45"
-                  ik-worker="0.02, 0.785"
-		  reflect-collision="color: yellow"
-                  ignore-collision="other:kortex-gen2; data: 0/6, 0/7, 1/6, 1/7"
-		  reflect-joint-limits
-		  />
-        <a-circle radius="0.03" color="blue"
-		  id="finger-2"
-                  robot-loader="model: gen2-finger-2"
-                  attach-to-another="to: kortex-gen2;event: a,b,x,y"
-                  finger-closer2="closeMax: 44,90; openMax: 0,0; initialJointValues: 0.01,45"
-                  ik-worker="0.02, 0.785"
-		  reflect-collision="color: yellow"
-                  ignore-collision="other:kortex-gen2; data: 0/6, 0/7, 1/6, 1/7"
-		  reflect-joint-limits
-		  />
-        <a-circle radius="0.03" color="blue"
-		  id="finger-3"
-                  robot-loader="model: gen2-finger-3"
-                  attach-to-another="to: kortex-gen2;event: a,b,x,y"
-                  finger-closer2="closeMax: 44,90; openMax: 0,0; initialJointValues: 0.01,45"
-                  ik-worker="0.02, 0.785"
-		  reflect-collision="color: yellow"
-                  ignore-collision="other:kortex-gen2; data: 0/6, 0/7, 1/6, 1/7"
-		  reflect-joint-limits
-		  />
+      </a-plane>
+      <a-plane id="left-piper"
+               position="-0.2 0.8 -1.0" rotation="-90 0 90"
+               width="0.04" height="0.04" color="blue"
+               robot-loader="model: piper"
+               ik-worker="0, 0, 0, 0, 0, 0"
+               reflect-collision="color: yellow"
+               exact_solution="exact: false"
+               reflect-joint-limits
+               set-joint-limit-keep-moving="true"
+               arm-motion-ui
+	       >
       </a-plane>
     </a-scene>
   </body>
