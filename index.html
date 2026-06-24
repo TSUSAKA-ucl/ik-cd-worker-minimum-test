@@ -38,7 +38,6 @@
         </a-entity>
       </a-entity>
 
-	       <!-- add-frame-to-joints="from:5" -->
       <a-plane id="right-piper"
                position="0.2 1 -1" rotation="-90 0 90"
                width="0.04" height="0.04" color="blue"
@@ -47,9 +46,9 @@
                reflect-collision="color: yellow"
                exact_solution="exact: false"
                reflect-joint-limits
-               set-joint-limit-keep-moving="true"
+               joint-limit-keep-moving-mask="mask: 0, 0, 0, 1, 1, 1"
                arm-motion-ui
-	       >
+               >
       </a-plane>
       <a-plane id="left-piper"
                position="-0.2 1 -1" rotation="-90 0 90"
@@ -61,7 +60,7 @@
                reflect-joint-limits
                set-joint-limit-keep-moving="true"
                arm-motion-ui
-	       >
+               >
       </a-plane>
     </a-scene>
   </body>
