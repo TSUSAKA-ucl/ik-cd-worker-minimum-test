@@ -14,8 +14,8 @@
   },
   "dependencies": {
     "@ucl-nuee/piper": "^1.2.1",
-    "@ucl-nuee/ik-cd-worker": "^1.0.7",
-    "@ucl-nuee/robot-loader": "^1.2.4",
+    "@ucl-nuee/ik-cd-worker": "workspace:*",
+    "@ucl-nuee/robot-loader": "workspace:*",
     "aframe": "^1.7.1"
   }
 }
