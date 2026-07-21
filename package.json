@@ -1,7 +1,7 @@
 {
   "name": "piper-dual-robot",
   "private": false,
-  "version": "0.0.1",
+  "version": "0.0.2",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -13,7 +13,7 @@
     "vite": "^7.3.1"
   },
   "dependencies": {
-    "@ucl-nuee/piper": "^1.2.1",
+    "@ucl-nuee/piper": "^1.2.2",
     "@ucl-nuee/ik-cd-worker": "workspace:*",
     "@ucl-nuee/robot-loader": "workspace:*",
     "aframe": "^1.7.1"
