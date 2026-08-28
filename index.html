@@ -5,18 +5,24 @@
     <script type="module">
       import './style.css'
       import AFRAME from 'aframe'
-      import '@ucl-nuee/robot-loader/robotRegistry.js';
-      import '@ucl-nuee/robot-loader/robotLoader.js';
-      import '@ucl-nuee/robot-loader/ikWorker.js';
-      import '@ucl-nuee/robot-loader/reflectJointLimits.js';
-      import '@ucl-nuee/robot-loader/reflectCollision.js';
-      import '@ucl-nuee/robot-loader/armMotionUI.js';
-      import '@ucl-nuee/robot-loader/vrControllerThumbMenu.js';
-      import '@ucl-nuee/robot-loader/fingerCloser.js';
-      import '@ucl-nuee/robot-loader/ignoreCollision.js';
-      import '@ucl-nuee/robot-loader/addFrameToJoints.js';
       import '@ucl-nuee/ik-cd-worker/IkWorkerParamsComponents.js';
+      import '@ucl-nuee/robot-loader/addFrameToJoints.js';
+      import '@ucl-nuee/robot-loader/armMotionUI.js';
+      import '@ucl-nuee/robot-loader/attachToAnother.js';
+      import '@ucl-nuee/robot-loader/baseMover.js';
+      import '@ucl-nuee/robot-loader/changeOpacity.js';
+      import '@ucl-nuee/robot-loader/ignoreCollision.js';
+      import '@ucl-nuee/robot-loader/ikWorker.js';
+      import '@ucl-nuee/robot-loader/jointMoveTo.js';
+      import '@ucl-nuee/robot-loader/multipleTogether.js';
       import '@ucl-nuee/robot-loader/oneAxisMover.js';
+      import '@ucl-nuee/robot-loader/reflectCollision.js';
+      import '@ucl-nuee/robot-loader/reflectJointLimits.js';
+      import '@ucl-nuee/robot-loader/reflectWorkerJoints.js';
+      import '@ucl-nuee/robot-loader/robotLoader.js';
+      import '@ucl-nuee/robot-loader/robotRegistry.js';
+      import '@ucl-nuee/robot-loader/stillObjects.js';
+      import '@ucl-nuee/robot-loader/vrControllerThumbMenu.js';
     </script>
   </head>
   <body>
@@ -25,14 +31,14 @@
                 robot-registry >
         <a-entity right-controller
                   laser-controls="hand: right"
-                  thumbstick-menu="items: right-piper; laser: false"
+                  thumbstick-menu="items: right-piper,dual-controller,right-piper; laser: false"
                   target-selector="id: right-piper"
                   event-distributor
                   visible="false">
         </a-entity>
         <a-entity left-controller
                   laser-controls="hand: left"
-                  thumbstick-menu="items: left-piper; laser: false"
+                  thumbstick-menu="items: left-piper,dual-controller,left-piper; laser: false"
                   target-selector="id: left-piper"
                   event-distributor
                   visible="false">
@@ -40,53 +46,70 @@
       </a-entity>
 
       <a-plane id="right-piper"
-               position="0.2 1 -1" rotation="-90 0 90"
+               position="0.3 1 -1" rotation="-90 0 90"
                width="0.04" height="0.04" color="blue"
                robot-loader="model: piper"
-               ik-worker="0.20, 1.57, -0.79, 0, 0.79, 0"
+               ik-worker="-0.40, 1.57, -1.57, 0, 0.79, 0"
                reflect-collision="color: yellow"
                exact_solution="exact: false"
                reflect-joint-limits
                joint-limit-keep-moving-mask="mask: 0, 0, 0, 1, 1, 1"
                arm-motion-ui
+               attach-opacity-recursively="opacity: 0.25"
 	       >
 	<a-entity id="right-finger7"
+		  position="0 -0.005 0"
 		  robot-loader="model: piper-finger7"
 		  ik-worker=""
                   attach-to-another="to: right-piper;event: a,b,x,y"
+                  ignore-collision__a="other:right-piper; data: 0/6, 0/7"
 		  one-axis-mover="axis: 0,-1,0; posiMax:0.035"
-		  />
+	/>
 	<a-entity id="right-finger8"
+		  position="0 0.005 0"
 		  robot-loader="model: piper-finger8"
 		  ik-worker=""
                   attach-to-another="to: right-piper;event: a,b,x,y"
+                  ignore-collision__a="other:right-piper; data: 0/6, 0/7"
+                  ignore-collision__b="other:right-finger7; data: 0/0, 0/1, 1/0, 1/1"
 		  one-axis-mover="axis: 0,1,0; posiMax:0.035"
-		  />
+	/>
       </a-plane>
+
       <a-plane id="left-piper"
-               position="-0.2 1 -1" rotation="-90 0 90"
+               position="-0.3 1 -1" rotation="-90 0 90"
                width="0.04" height="0.04" color="blue"
                robot-loader="model: piper"
                ik-worker="-0.20, 1.57, -0.79, 0, 0.79, 0"
                reflect-collision="color: yellow"
                exact_solution="exact: false"
                reflect-joint-limits
-               set-joint-limit-keep-moving="true"
+               joint-limit-keep-moving-mask="mask: 0, 0, 0, 1, 1, 1"
                arm-motion-ui
-               >
+               attach-opacity-recursively="opacity: 0.25"
+      >
 	<a-entity id="left-finger7"
 		  robot-loader="model: piper-finger7"
 		  ik-worker=""
                   attach-to-another="to: left-piper;event: a,b,x,y"
-		  one-axis-mover="axis: 0,-1,0; posiMax:0.035; posiEvent:ybuttondown; posiStopEvent:ybuttonup; negaEvent:xbuttondown; negaStopEvent:xbuttonup"
-		  />
+                  ignore-collision__a="other:left-piper; data: 0/6, 0/7"
+	          one-axis-mover="axis: 0,-1,0; posiMax:0.035; posiEvent:ybuttondown; posiStopEvent:ybuttonup; negaEvent:xbuttondown; negaStopEvent:xbuttonup"
+	/>
 	<a-entity id="left-finger8"
 		  robot-loader="model: piper-finger8"
 		  ik-worker=""
                   attach-to-another="to: left-piper;event: a,b,x,y"
-		  one-axis-mover="axis: 0,1,0;  posiMax:0.035; posiEvent:ybuttondown; posiStopEvent:ybuttonup; negaEvent:xbuttondown; negaStopEvent:xbuttonup"
-		  />
+                  ignore-collision__a="other:left-piper; data: 0/6, 0/7"
+                  ignore-collision__b="other:left-finger7; data: 0/0, 0/1, 1/0, 1/1"
+                  one-axis-mover="axis: 0,1,0; posiMax:0.035; posiEvent:ybuttondown; posiStopEvent:ybuttonup; negaEvent:xbuttondown; negaStopEvent:xbuttonup"
+	/>
       </a-plane>
+      <a-tetrahedron id="dual-controller"
+		     radius=0.1
+		     color=red
+		     reserve-multiple-together="targets: right-piper, left-piper"
+		     />
+      </a-entity>
     </a-scene>
   </body>
 </html>
