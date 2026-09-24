@@ -1,13 +1,16 @@
 {
   "name": "piper-dual-robot",
   "private": false,
-  "version": "0.0.2",
+  "version": "0.1.2",
   "type": "module",
   "devDependencies": {
     "@vitejs/plugin-basic-ssl": "^2.1.4",
     "vite": "^7.3.1"
   },
   "dependencies": {
+    "@roamhq/wrtc": "^0.10.0",
+    "node-webcam": "^0.8.2",
+    "peer": "^1.0.2",
     "@ucl-nuee/piper": "^1.2.2",
     "aframe": "1.7.1",
     "@ucl-nuee/robot-loader": "1.2.7",

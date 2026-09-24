@@ -2,6 +2,8 @@
 <html lang="en">
 <html>
   <head>
+    <meta charset="utf-8">
+    <title>piper A-Frame WebRTC NVENC</title>
     <script type="module">
       import './style.css'
       import AFRAME from 'aframe'
@@ -23,10 +25,28 @@
       import '@ucl-nuee/robot-loader/robotRegistry.js';
       import '@ucl-nuee/robot-loader/stillObjects.js';
       import '@ucl-nuee/robot-loader/vrControllerThumbMenu.js';
+      import './followCamera.js';
     </script>
   </head>
   <body>
     <a-scene  xr-mode-ui="XRMode: xr" >
+      <a-assets>
+	<!-- 映像を流し込むためのVideo要素 -->
+	<video id="edge-video" autoplay playsinline muted crossOrigin="anonymous"
+	       >
+	</video>
+      </a-assets>
+      <!-- 映像を表示する3Dオブジェクト（16:9の比率） -->
+      <!-- RealSense D435i -->
+      <!-- fx->915.4345703125, fy->913.794616699219, (914.61459) -->
+      <!-- cx->629.752746582031, cy->356.769989013672 -->
+      <!-- 629.7...-1280/2 = -10.247..., 356.7...-720/2 = -3.23001... -->
+      <!-- e.g. width=12.80, height=7.20,  -->
+      <!-- camX = -0.10247 camY = -0.0323 camZ = 9.1461 -->
+      <a-plane id="screen"
+	       follow-camera="position: -0.10247 0.0323 -9.1461; rotation: 0 0 0"
+	       width="12.80" height="7.20"
+	       material="src: #edge-video; shader: flat;"></a-plane>
       <a-entity id="robot-registry"
                 robot-registry >
         <a-entity right-controller
@@ -46,7 +66,7 @@
       </a-entity>
 
       <a-plane id="right-piper"
-               position="0.3 1 -1" rotation="-90 0 90"
+	       follow-camera="position: 0.339391 -0.248323 -0.555799; quaternion: 0.387435 0.364605 0.62522 0.571014"
                width="0.04" height="0.04" color="blue"
                robot-loader="model: piper"
                ik-worker="-0.40, 1.57, -1.57, 0, 0.79, 0"
