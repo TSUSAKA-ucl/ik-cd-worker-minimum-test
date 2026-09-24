@@ -9,9 +9,9 @@
   },
   "dependencies": {
     "@ucl-nuee/piper": "^1.2.2",
-    "aframe": "^1.7.1",
-    "@ucl-nuee/ik-cd-worker": "1.0.7",
-    "@ucl-nuee/robot-loader": "1.2.6"
+    "aframe": "1.7.1",
+    "@ucl-nuee/robot-loader": "1.2.7",
+    "@ucl-nuee/ik-cd-worker": "1.0.8"
   },
   "scripts": {
     "dev": "vite",
