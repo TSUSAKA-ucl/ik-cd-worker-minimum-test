@@ -38,13 +38,13 @@
       </a-assets>
       <!-- 映像を表示する3Dオブジェクト（16:9の比率） -->
       <!-- RealSense D435i -->
-      <!-- fx->915.4345703125, fy->913.794616699219, (914.61459) -->
+      <!-- (calibrated)fLength->884.134 -->
       <!-- cx->629.752746582031, cy->356.769989013672 -->
       <!-- 629.7...-1280/2 = -10.247..., 356.7...-720/2 = -3.23001... -->
       <!-- e.g. width=12.80, height=7.20,  -->
-      <!-- camX = -0.10247 camY = -0.0323 camZ = 9.1461 -->
+      <!-- camX = -0.10247 camY = -0.0323 camZ = -8.84134 -->
       <a-plane id="screen"
-	       follow-camera="position: -0.10247 0.0323 -9.1461; rotation: 0 0 0"
+	       follow-camera="position: -0.10247 0.0323 -8.84134; rotation: 0 0 0"
 	       width="12.80" height="7.20"
 	       material="src: #edge-video; shader: flat;"></a-plane>
       <a-entity id="robot-registry"
@@ -65,18 +65,19 @@
         </a-entity>
       </a-entity>
 
+      <!-- ik-worker="-0.40, 1.57, -1.57, 0, 0.79, 0" -->
       <a-plane id="right-piper"
-	       follow-camera="position: 0.339391 -0.248323 -0.555799; quaternion: 0.387435 0.364605 0.62522 0.571014"
+	       follow-camera="position: 0.336708 -0.248462 -0.531728; quaternion: 0.38977 -0.361008 -0.623631 -0.573442"
                width="0.04" height="0.04" color="blue"
                robot-loader="model: piper"
-               ik-worker="-0.40, 1.57, -1.57, 0, 0.79, 0"
+	       ik-worker="0.0, 2.1, -1.0, -0.5, -1.0, -1.57"
                reflect-collision="color: yellow"
                exact_solution="exact: false"
                reflect-joint-limits
                joint-limit-keep-moving-mask="mask: 0, 0, 0, 1, 1, 1"
                arm-motion-ui
-               attach-opacity-recursively="opacity: 0.25"
 	       >
+	       <!-- attach-opacity-recursively="opacity: 0.25" -->
 	<a-entity id="right-finger7"
 		  position="0 -0.005 0"
 		  robot-loader="model: piper-finger7"
@@ -98,36 +99,22 @@
 
       <a-plane id="left-piper"
                position="-0.3 1 -1" rotation="-90 0 90"
-               width="0.04" height="0.04" color="blue"
-               robot-loader="model: piper"
-               ik-worker="-0.20, 1.57, -0.79, 0, 0.79, 0"
-               reflect-collision="color: yellow"
-               exact_solution="exact: false"
-               reflect-joint-limits
-               joint-limit-keep-moving-mask="mask: 0, 0, 0, 1, 1, 1"
-               arm-motion-ui
-               attach-opacity-recursively="opacity: 0.25"
-      >
-	<a-entity id="left-finger7"
-		  robot-loader="model: piper-finger7"
-		  ik-worker=""
-                  attach-to-another="to: left-piper;event: a,b,x,y"
-                  ignore-collision__a="other:left-piper; data: 0/6, 0/7"
-	          one-axis-mover="axis: 0,-1,0; posiMax:0.035; posiEvent:ybuttondown; posiStopEvent:ybuttonup; negaEvent:xbuttondown; negaStopEvent:xbuttonup"
-	/>
-	<a-entity id="left-finger8"
-		  robot-loader="model: piper-finger8"
-		  ik-worker=""
-                  attach-to-another="to: left-piper;event: a,b,x,y"
-                  ignore-collision__a="other:left-piper; data: 0/6, 0/7"
-                  ignore-collision__b="other:left-finger7; data: 0/0, 0/1, 1/0, 1/1"
-                  one-axis-mover="axis: 0,1,0; posiMax:0.035; posiEvent:ybuttondown; posiStopEvent:ybuttonup; negaEvent:xbuttondown; negaStopEvent:xbuttonup"
-	/>
+               width="0.24" height="0.04" color="blue"
+	       >
       </a-plane>
       <a-entity id="dual-controller"
 		a-axes-frame="length: 0.15; radius: 0.010; color: red"
 		reserve-multiple-together="targets: right-piper, left-piper"
 		/>
     </a-scene>
+
+  <script type="module">
+    import './followCamera.js';
+    import { startWebRTC } from './startWebRTC.js';
+    // A-Frameシーン読み込み完了後に実行
+    document.querySelector('a-scene').addEventListener('loaded', () => {
+      startWebRTC("edge-video");
+    });
+  </script>
   </body>
 </html>
